@@ -1,11 +1,71 @@
-# GppVerdict: Mining Google Play Protect Verdicts
+# GppVerdict: Mining Google Play Protect Verdicts on Delisted Android Apps
 
-Artifact for the paper. It holds the pipeline that installs Android apps, extracts their Google Play Protect verdicts from an Android device, and it cross-checks malicious apps with VirusTotal. Apps are preselected from AndroZoo.
+Artifact of the paper *GppVerdict: Mining Google Play Protect Verdicts on Delisted Android
+Apps*. Google Play Protect does not publish its per-app verdicts: a verdict only appears on
+the device where an app is installed. GppVerdict collects them at scale. It installs apps
+on an Android device with the app verifier enabled, records the dialog that Google Play
+Protect displays when it blocks an installation, and cross-checks the flagged apps with
+VirusTotal.
+
+## The study in brief
+
+We installed 10,500 apps that AndroZoo collected from 2020 to 2026 (1,500 per year) and
+that have since been removed from Google Play, on a Google Pixel 9a with the app verifier
+enabled.
+
+- Google Play Protect blocked **5,346 apps (50.9%)**, but 5,257 of these blocks (98.3%)
+  concern the age of the app: the message says that it "was built for an older version of
+  Android", and it was shown only for apps that target SDK version 33 or lower.
+- Only **89 apps** were blocked because of their behavior: **63 as harmful** and **26 as
+  unsafe**. For 54 of them, the message names the threat, e.g., unauthorized charges on
+  the mobile bill, spying on personal data, or advertising fraud.
+- **79 of these 89 apps have no detection in their VirusTotal reports.**
+
+`python stats.py` recomputes the installation figures from the released results.
+
+## Released data
+
+| Path | Content |
+|---|---|
+| `study_input_shas.csv` | The 10,500 sampled APKs (`catalog_year`, `sha256`) |
+| `output/results.csv` | One row per installation: outcome, category of the Google Play Protect dialog (if any), target SDK version, VirusTotal detections recorded in AndroZoo, … |
+| `output/alerts.csv` | One row per dialog: title, message (`body`), buttons, action taken |
+| `output/notifications.csv` | Google Play notifications seen during the installations (none carries a verdict) |
+| `report/harmful_vs_vt.csv` | The 89 apps blocked as harmful or unsafe, with the message of their dialog and the detections in their VirusTotal reports |
+| `vt_out/` | The raw VirusTotal reports of these 89 APKs (`<sha256>.json`) |
+| `vt_apks_summary.csv` | The per-APK summary written by `vt_lookup.py` |
+
+Every file identifies an app by the SHA-256 of its APK. The 89 APKs are live malware and
+are not in this repository; they are available on Zenodo (restricted access, see the
+paper).
+
+## From the paper to the code
+
+The collection process of the paper has three phases:
+
+1. **Sample collection.** The removed apps are the Google Play apps of AndroZoo that no
+   longer appear in Google Play's sitemaps. We do not publish this list, only the sample
+   that the study drew from it: `study_input_shas.csv`. `sample_years.py` draws such a
+   sample from a list of removed apps in AndroZoo's catalog format, which you build
+   yourself (`Data/gone_apps.tsv` by default).
+2. **Google Play Protect responses.** `collect.py` downloads each APK from AndroZoo,
+   installs it with the app verifier enabled, records the install-time dialog, and
+   uninstalls the app; `run.py` does the same for a local folder of APKs.
+   `install_flagged.py` re-installs blocked apps with the verifier for USB installs turned
+   off and observes the notification that Google Play Protect then displays: in the
+   study, the message that Google Play Protect showed in the Google Play app was always
+   the same as the install-time one, so the dataset relies on the install-time dialogs
+   only.
+3. **Cross-validation with VirusTotal.** `vt_lookup.py` retrieves by SHA-256 the most
+   recent VirusTotal reports of the 89 apps, without uploading or rescanning them, and
+   `harmful_vs_vt.py` joins them with the dialogs. For the other 10,411 apps, the paper
+   uses the detections recorded in AndroZoo (`vt_detection`).
 
 ## Setup (once)
 
 1. **Phone** — Developer options → enable *USB debugging* and, if present,
-   *Verify apps over USB*. Turn off the screen lock (no PIN).
+   *Verify apps over USB* (the app verifier whose dialogs GppVerdict records). Turn off
+   the screen lock (no PIN).
 2. **Computer** — install
    [Android Platform Tools](https://developer.android.com/tools/releases/platform-tools)
    (for `adb`) and Python 3.9+.
@@ -55,10 +115,12 @@ python run.py --apks /path/to/apks --out results --recursive --resume
 
 ### 2. AndroZoo pipeline — `collect.py`
 
-Streams a catalog (e.g. `gone_apps.tsv`, possibly inside a `.tar.gz`), downloads each
-APK from AndroZoo, installs it, captures the Play Protect alert (dialog **and**
-notification, screenshot, logcat), then uninstalls. Stored in the same database as
-`run.py`, plus the VirusTotal detection count from the catalog.
+Streams an AndroZoo catalog (possibly inside a `.tar.gz`), downloads each APK from
+AndroZoo, installs it with the app verifier enabled, records the Play Protect dialog
+(texts and screenshot), the Google Play notifications and the logcat, then uninstalls
+the app. Results are stored like `run.py`'s, plus the VirusTotal detection count
+recorded in the catalog. In the examples, `Data/gone_apps.tsv` stands for your own list
+of removed apps (not published).
 
 ```bash
 # Stratified sample by VirusTotal detection count, recent and not too big, no upload
@@ -69,8 +131,9 @@ python collect.py --catalog Data/gone_apps.tsv --out results_az \
 python collect.py --catalog Data/gone_apps.tsv --out results_all --all --no-scan --resume
 ```
 
-VirusTotal detection buckets: `vt0` (clean), `vt1-4`, `vt5-14`, `vt15+` (likely
-malware).
+VirusTotal detection buckets, as in the paper: `vt0` (no detection), `vt1-4`, `vt5-14`,
+`vt15+`. A `vt0` app is not necessarily benign: most of the apps that Google Play Protect
+blocked as harmful or unsafe are in `vt0`.
 
 | Option | Effect |
 |---|---|
@@ -97,37 +160,63 @@ Draws a random, reproducible sample of *N* APKs per year from an AndroZoo catalo
 `collect.py` consumes directly, plus a readable CSV manifest.
 
 ```bash
+# The paper's design: 1,500 apps per year, 2020-2026 (its exact sample: study_input_shas.csv)
 python sample_years.py --catalog Data/gone_apps.tsv \
-    --per-year 500 --year-min 2020 --year-max 2026 --seed 1 \
+    --per-year 1500 --year-min 2020 --year-max 2026 --seed 1 \
     --out-tsv Data/sample.tsv --out-csv report/sample.csv
 
-# Draw a second sample that excludes everything already processed
-python sample_years.py --per-year 500 --seed 2 \
-    --exclude results_sample results_all \
+# Draw a new sample that excludes the apps already processed (here, the study's)
+python sample_years.py --per-year 500 --seed 2 --exclude output \
     --out-tsv Data/sample_b.tsv --out-csv report/sample_b.csv
 ```
 
-### 4. Re-installing flagged apps — `install_flagged.py`
+### 4. Re-installing blocked apps — `install_flagged.py`
 
 `collect.py` never forces a flagged install. `install_flagged.py` does the opposite,
-**deliberately**: it re-installs APKs Play Protect already blocked
-(`harmful` / `unsafe`) and observes what Play Protect does once the app is present
-(the "Harmful app found" notification, automatic removal, …).
+**deliberately**: it re-installs APKs that Play Protect blocked at install time and
+observes what Play Protect does once the app is present (the notification it shows,
+automatic removal, …). The paper used it to check that the message Google Play Protect
+then shows in the Google Play app is the same as the install-time one.
 
 This requires *"Verify apps over USB"* **OFF** and the **phone online** (the
 background scan of installed apps is a cloud operation). The tool changes no
 settings — you drive the phone.
 
 ```bash
-python install_flagged.py                       # harmful/unsafe from results_all/
+python install_flagged.py --source output --categories harmful unsafe   # the 89 apps
 python install_flagged.py --sha256 f828c1e2... --observe 600 --keep-installed
 ```
 
-### 5. Quick tally — `stats.py`
+Without `--categories`, every app that got an alert is re-installed.
+
+### 5. Installation figures of the paper — `stats.py`
+
+Prints the installation outcomes (with the failure codes), the verdicts of the blocked
+apps by VirusTotal detections recorded in AndroZoo, the dialog titles, and the hours in
+which Google Play Protect most likely did not check the installed apps.
 
 ```bash
-python stats.py --out results_all
+python stats.py                    # the study's results, in output/
+python stats.py --out results_all  # another run
 ```
+
+### 6. VirusTotal cross-validation — `vt_lookup.py`, `harmful_vs_vt.py`
+
+`vt_lookup.py` hashes every APK of a folder and retrieves its most recent VirusTotal
+report by SHA-256 (`GET /api/v3/files/<sha256>`, allowed with a free API key), without
+uploading or rescanning it. The raw reports are cached in `vt_out/` and reused on
+re-runs, so the counts date from each file's last VirusTotal analysis
+(`vt_last_analysis`). `harmful_vs_vt.py` then joins them with the dialogs of the 89
+harmful or unsafe apps into `report/harmful_vs_vt.csv`.
+
+```bash
+export VT_KEY=...       # or put the key in .vt_key (git-ignored)
+python vt_lookup.py --apks path/to/harmful_unsafe_apks   # the 89 APKs from Zenodo -> vt_out/
+python harmful_vs_vt.py                                  # output/ + vt_out/ -> report/harmful_vs_vt.csv
+```
+
+A free key allows 4 lookups per minute, so the 89 lookups take about 25 minutes; the
+script waits out the rate limit, and a re-run resumes after an interruption.
 
 ---
 
@@ -137,7 +226,7 @@ python stats.py --out results_all
 results/
 ├── results.csv         # one row per APK
 ├── alerts.csv          # one row per Play Protect dialog
-├── notifications.csv   # one row per Play Protect notification
+├── notifications.csv   # one row per Google Play notification
 ├── runs.csv            # one row per run (device info + argv)
 ├── screenshots/        # <sha256[:16]>_<n>.png (dialog), <sha256[:16]>_notif.png (shade)
 ├── apks/               # downloaded-APK cache (collect.py; emptied unless --keep-apks)
@@ -149,26 +238,56 @@ APK so they are always complete even if the run is cut. `result_id` links alerts
 notifications back to their result row, and `sha256` is duplicated into every file so
 each one is usable on its own. A resumed run reads `results.csv` to skip what is
 already done. The 20k-char logcat excerpt is kept as a file under `logcat/` (not inline
-in the CSV), referenced by `logcat_path`.
+in the CSV), referenced by `logcat_path`. The study's results in `output/` keep the three
+CSV files only.
 
-**`outcome` values**
+**`outcome` values** (label in the paper's outcome table)
 
-- `blocked_by_play_protect` — an alert appeared and the install failed.
-- `installed_after_alert` — an alert appeared but the app installed anyway (e.g. a
-  scan found nothing).
-- `installed_no_alert` — no alert, app installed.
-- `install_failed` — install failed with no alert; the code is in
-  `install_failure_code` (e.g. `INSTALL_FAILED_DEPRECATED_SDK_VERSION`).
-- `timeout`, `timeout_after_alert`, `error` — incomplete or errored.
+- `blocked_by_play_protect` — *Blocked by Google Play Protect*: a dialog appeared and the
+  app was not installed.
+- `installed_no_alert` — *Installed without alert*.
+- `installed_after_alert` — *Installed after alert*: a dialog appeared but the app
+  installed anyway.
+- `install_failed` — *Installation failed*, without any dialog; the code is in
+  `install_failure_code`: `INSTALL_FAILED_MISSING_SPLIT` (only the base APK of a split
+  app), `INSTALL_FAILED_NO_MATCHING_ABIS` (native code for another CPU architecture),
+  `INSTALL_FAILED_VERIFICATION_FAILURE`, `INSTALL_FAILED_DEPRECATED_SDK_VERSION`,
+  `INSTALL_PARSE_FAILED_MANIFEST_MALFORMED`, or none.
+- `timeout`, `timeout_after_alert` — *Timed out without / after alert*.
+- `download_failed`, `error` — processing errors (`collect.py`).
 
-**`category` values** (per alert): `harmful`, `old_target_sdk`, `unsafe`,
-`unverified_developer`, `scan_prompt`, `no_problem_found`, `progress`, `other`.
-Classification uses English/French keywords in `gppverdict/classifier.py`; the raw
-texts (`texts_json`) are always kept, so you can refine the rules.
+> In `output/results.csv`, one record was corrected by hand: `9782c8f1…`
+> (`com.offline.sinfjahontarixi8`) showed a *Harmful app blocked* dialog and was never
+> installed, but the install command then timed out. It is counted as
+> `blocked_by_play_protect`, as in the paper.
 
-> The *"built for an older version of Android"* alert is a **targetSdk** block, not
-> necessarily a malware detection. Cross-check `category` against `target_sdk` and
-> external labels (VirusTotal, AVClass).
+**`category` values** (per dialog): `harmful`, `old_target_sdk`, `unsafe`,
+`unverified_developer`, `scan_prompt`, `no_problem_found`, `progress`, `other`;
+`primary_category` in `results.csv` is the main one of each app. Classification uses
+English/French keywords in `gppverdict/classifier.py`; the raw texts (`texts_json`) are
+always kept, so you can refine the rules.
+
+> `old_target_sdk` is the paper's *outdated target SDK* message ("This app was built for
+> an older version of Android and doesn't include the latest privacy protections"). It is
+> a targetSdk block, not necessarily a malware detection: in the study, it was shown only
+> for apps that target SDK version 33 or lower. It comes with the title *Unsafe app
+> blocked*, like the `unsafe` messages, so label apps by `category`, never by the dialog
+> title.
+
+> An app installed without an alert was not necessarily checked by Google Play Protect:
+> in 28 hours of the study (October 29 – November 6, 2026, UTC), it most likely did not
+> check the 2,058 apps installed without an alert. `stats.py` lists these hours; use
+> `created_at` to find the apps.
+
+**`vt_detection` / `vt_bucket`** (`results.csv`): the number of antivirus engines that
+flag the APK on VirusTotal, as recorded in the AndroZoo catalog, and its bucket.
+
+**`report/harmful_vs_vt.csv`**: one row per app blocked as harmful or unsafe, with the
+Play Protect verdict (`pp_verdict`, `pp_alert_title`, `pp_alert_body`, `pp_test_date`),
+the detections recorded in AndroZoo (`az_vt_detection`, `az_vt_bucket`), and the
+VirusTotal report: `vt_malicious` (engines that flag the APK), `vt_engines` (engines with
+a verdict), `vt_bucket`, `vt_threat_label`, `vt_detections` (each flagging engine and its
+label), `vt_last_analysis` and `vt_first_submission`.
 
 ---
 
@@ -191,15 +310,17 @@ texts (`texts_json`) are always kept, so you can refine the rules.
 run.py                      # CLI for a local APK folder + main loop
 collect.py                  # AndroZoo pipeline (sample → download → install → capture)
 sample_years.py             # year-stratified reservoir sampler over an AndroZoo catalog
-install_flagged.py          # deliberately re-install flagged apps and observe Play Protect
-stats.py                    # quick tally from a run's results.csv
+install_flagged.py          # deliberately re-install blocked apps and observe Play Protect
+stats.py                    # the paper's installation figures from a run's results.csv
+vt_lookup.py                # VirusTotal reports of a folder of APKs, by SHA-256
+harmful_vs_vt.py            # the harmful/unsafe apps with their VirusTotal reports
 gppverdict/
 ├── catalog.py              # AndroZoo catalog reader + stratified sampling
 ├── androzoo.py             # AndroZoo download client (by sha256, cached)
 ├── device.py               # adb wrapper (device info, packages, uninstall)
 ├── installer.py            # async adb install (blocks while the dialog is shown)
 ├── watcher.py              # detect / extract / dismiss dialogs (uiautomator2)
-├── notifications.py        # Play Protect notification capture (dumpsys notification)
+├── notifications.py        # notifications of the Play Protect packages (dumpsys notification)
 ├── logcat.py               # logcat capture + filtered extract
 ├── static.py               # sha256 + APK metadata (androguard)
 ├── classifier.py           # alert category + outcome
@@ -207,7 +328,11 @@ gppverdict/
 scripts/
 ├── run-robust.sh           # resumable, drop-tolerant long-run wrapper
 └── status.sh               # progress + per-year block-rate health snapshot
-report/                     # final study reports (PDF) + sample manifests (CSV)
+study_input_shas.csv        # the study's sample (10,500 APKs)
+output/                     # the study's results (results.csv, alerts.csv, notifications.csv)
+report/harmful_vs_vt.csv    # the 89 harmful/unsafe apps and their VirusTotal reports
+vt_out/                     # raw VirusTotal reports of the 89 APKs
+vt_apks_summary.csv         # vt_lookup.py's per-APK summary
 ```
 
 ---
