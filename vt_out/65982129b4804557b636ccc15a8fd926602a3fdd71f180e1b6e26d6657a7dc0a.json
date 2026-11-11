@@ -1,0 +1,1037 @@
+{
+  "data": {
+    "id": "65982129b4804557b636ccc15a8fd926602a3fdd71f180e1b6e26d6657a7dc0a",
+    "type": "file",
+    "links": {
+      "self": "https://www.virustotal.com/api/v3/files/65982129b4804557b636ccc15a8fd926602a3fdd71f180e1b6e26d6657a7dc0a"
+    },
+    "attributes": {
+      "size": 20123547,
+      "type_tag": "android",
+      "type_description": "Android",
+      "first_submission_date": 1672202171,
+      "last_analysis_date": 1675151834,
+      "total_votes": {
+        "harmless": 0,
+        "malicious": 0
+      },
+      "last_analysis_stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "undetected": 65,
+        "harmless": 0,
+        "timeout": 0,
+        "confirmed-timeout": 0,
+        "failure": 0,
+        "type-unsupported": 9
+      },
+      "magic": "Zip archive data",
+      "tlsh": "T10E17238BEB18C42EC97795B2CE6A52733267DE4406839B333909B30C69735895F19FC6",
+      "trid": [
+        {
+          "file_type": "Android Package",
+          "probability": 43.7
+        },
+        {
+          "file_type": "Java Archive",
+          "probability": 15.3
+        },
+        {
+          "file_type": "VYM Mind Map",
+          "probability": 14.2
+        },
+        {
+          "file_type": "Sweet Home 3D design (generic)",
+          "probability": 11.9
+        },
+        {
+          "file_type": "Mozilla Firefox browser extension",
+          "probability": 9.0
+        }
+      ],
+      "sha256": "65982129b4804557b636ccc15a8fd926602a3fdd71f180e1b6e26d6657a7dc0a",
+      "type_extension": "apk",
+      "androguard": {
+        "Activities": [
+          "com.miracast.tv.fastscreenmirroring.appcontent.activitys.SplashActivity",
+          "com.miracast.tv.fastscreenmirroring.appcontent.activitys.MainActivity",
+          "com.miracast.tv.fastscreenmirroring.appcontent.activitys.StartOneActivity",
+          "com.miracast.tv.fastscreenmirroring.appcontent.activitys.RecentActivity",
+          "com.miracast.tv.fastscreenmirroring.appcontent.activitys.TVListActivity",
+          "com.miracast.tv.fastscreenmirroring.appcontent.youtube_browser.YoutubeBrowserActivity",
+          "com.miracast.tv.fastscreenmirroring.appcontent.activitys.Audio.InsidePlayListActivity",
+          "com.miracast.tv.fastscreenmirroring.appcontent.activitys.Photos.Specific_photo_Album_Activity",
+          "com.miracast.tv.fastscreenmirroring.appcontent.activitys.Photos.PhotoFolderActivity",
+          "com.miracast.tv.fastscreenmirroring.appcontent.activitys.AllFunctionActivity",
+          "com.miracast.tv.fastscreenmirroring.appcontent.activitys.Audio.AllPlayListActivity",
+          "com.miracast.tv.fastscreenmirroring.appcontent.activitys.AudioAlbumActivity",
+          "com.miracast.tv.fastscreenmirroring.appcontent.activitys.Audio.AlbumDetailsActivity",
+          "com.miracast.tv.fastscreenmirroring.appcontent.activitys.GuideActivity",
+          "com.miracast.tv.fastscreenmirroring.appcontent.activitys.Video.ActivityPlayerMain",
+          "com.miracast.tv.fastscreenmirroring.appcontent.activitys.Video.ActivityVideoList",
+          "com.miracast.tv.fastscreenmirroring.appcontent.realcast.ExpandedControlsActivity",
+          "com.miracast.tv.fastscreenmirroring.appcontent.activitys.ProgressActivity",
+          "com.miracast.tv.fastscreenmirroring.appcontent.activitys.SelectYearActivity",
+          "com.miracast.tv.fastscreenmirroring.appcontent.activitys.UpgradeActivity",
+          "com.facebook.shimmer.config.mycustomads.CustomiseinterActivity",
+          "com.facebook.shimmer.config.mycustomads.CustomiseSplashOpenActivity",
+          "com.google.android.gms.ads.AdActivity",
+          "com.facebook.ads.AudienceNetworkActivity",
+          "unified.vpn.sdk.StartVPNServiceShadowActivity",
+          "com.karumi.dexter.DexterActivity",
+          "com.facebook.FacebookActivity",
+          "com.facebook.CustomTabMainActivity",
+          "com.facebook.CustomTabActivity",
+          "com.google.android.gms.common.api.GoogleApiActivity",
+          "com.android.billingclient.api.ProxyBillingActivity",
+          "com.google.android.play.core.missingsplits.PlayCoreMissingSplitsActivity",
+          "com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
+        ],
+        "AndroidVersionCode": "5",
+        "certificate": {
+          "Subject": {
+            "DN": "C:US, CN:Android, L:Mountain View, O:Google Inc., ST:California, OU:Android",
+            "C": "US",
+            "CN": "Android",
+            "L": "Mountain View",
+            "O": "Google Inc.",
+            "ST": "California",
+            "OU": "Android"
+          },
+          "validto": "2052-12-02 11:19:32",
+          "serialnumber": "9c5de878cdaf7040c7052cf79c99ef03439c11b8",
+          "thumbprint": "b92adffca054e7135c6f71b5c523a432a3fb12e4",
+          "validfrom": "2022-12-02 11:19:32",
+          "Issuer": {
+            "DN": "C:US, CN:Android, L:Mountain View, O:Google Inc., ST:California, OU:Android",
+            "C": "US",
+            "CN": "Android",
+            "L": "Mountain View",
+            "O": "Google Inc.",
+            "ST": "California",
+            "OU": "Android"
+          }
+        },
+        "VTAndroidInfo": 2.0,
+        "AndroidApplication": 1,
+        "Package": "com.miracast.tv.fastscreenmirroring",
+        "StringsInformation": [
+          "http://i.ytimg.com/vi/",
+          "http://ns.adobe.com/xap/1.0/\u0000",
+          "http://schemas.android.com/apk/res/android",
+          "https://www.example.com",
+          "https://youtube.com",
+          "https://youtube.com/watch?v="
+        ],
+        "Libraries": [
+          "org.apache.http.legacy"
+        ],
+        "AndroidApplicationError": false,
+        "Providers": [
+          "unified.vpn.sdk.HydraTransportInitProvider",
+          "unified.vpn.sdk.DBProvider",
+          "unified.vpn.sdk.UnifiedSdkInitProviderMain",
+          "unified.vpn.sdk.UnifiedSdkInitProviderVpn",
+          "unified.vpn.sdk.UcrContentProvider",
+          "unified.vpn.sdk.VpnConfigProvider",
+          "unified.vpn.sdk.CredentialsContentProvider",
+          "com.facebook.ads.AudienceNetworkContentProvider",
+          "com.google.firebase.provider.FirebaseInitProvider",
+          "com.google.android.gms.ads.MobileAdsInitProvider",
+          "com.facebook.internal.FacebookInitProvider",
+          "androidx.startup.InitializationProvider"
+        ],
+        "AndroidVersionName": "5.0",
+        "RiskIndicator": {
+          "APK": {
+            "DEX": 6,
+            "SHARED LIBRARIES": 8
+          },
+          "PERM": {
+            "INSTANT": 3,
+            "PRIVACY": 3,
+            "DANGEROUS": 2,
+            "NORMAL": 6,
+            "INTERNET": 1,
+            "GPS": 2
+          }
+        },
+        "Services": [
+          "com.miracast.tv.fastscreenmirroring.appcontent.realcast.fnblsdlfmk_WebService",
+          "unified.vpn.sdk.DaemonsService",
+          "unified.vpn.sdk.HydraProxyService",
+          "unified.vpn.sdk.AFVpnService",
+          "com.google.firebase.components.ComponentDiscoveryService",
+          "com.google.android.gms.cast.framework.media.MediaNotificationService",
+          "com.google.android.gms.cast.framework.ReconnectionService",
+          "com.google.firebase.messaging.FirebaseMessagingService",
+          "com.google.android.gms.ads.AdService",
+          "com.google.android.gms.measurement.AppMeasurementService",
+          "com.google.android.gms.measurement.AppMeasurementJobService",
+          "androidx.work.impl.background.systemalarm.SystemAlarmService",
+          "androidx.work.impl.background.systemjob.SystemJobService",
+          "androidx.work.impl.foreground.SystemForegroundService",
+          "androidx.room.MultiInstanceInvalidationService",
+          "com.google.android.datatransport.runtime.backends.TransportBackendDiscovery",
+          "com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService",
+          "com.google.android.play.core.assetpacks.AssetPackExtractionService",
+          "com.google.android.play.core.assetpacks.ExtractionForegroundService"
+        ],
+        "MinSdkVersion": "21",
+        "AndroidApplicationInfo": "APK",
+        "TargetSdkVersion": "32",
+        "Receivers": [
+          "com.google.android.gms.cast.framework.media.MediaIntentReceiver",
+          "com.google.firebase.iid.FirebaseInstanceIdReceiver",
+          "com.google.android.gms.measurement.AppMeasurementReceiver",
+          "com.facebook.CurrentAccessTokenExpirationBroadcastReceiver",
+          "com.facebook.AuthenticationTokenManager$CurrentAuthenticationTokenChangedBroadcastReceiver",
+          "androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver",
+          "androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy",
+          "androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy",
+          "androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy",
+          "androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy",
+          "androidx.work.impl.background.systemalarm.RescheduleReceiver",
+          "androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver",
+          "androidx.work.impl.diagnostics.DiagnosticsReceiver",
+          "com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver",
+          "androidx.profileinstaller.ProfileInstallReceiver"
+        ],
+        "AndroguardVersion": "4.0",
+        "main_activity": "com.miracast.tv.fastscreenmirroring.appcontent.activitys.SplashActivity",
+        "intent_filters": {
+          "Services": {
+            "unified.vpn.sdk.AFVpnService": {
+              "action": [
+                "android.net.VpnService"
+              ]
+            },
+            "com.google.firebase.messaging.FirebaseMessagingService": {
+              "action": [
+                "com.google.firebase.MESSAGING_EVENT"
+              ]
+            }
+          },
+          "Activities": {
+            "com.miracast.tv.fastscreenmirroring.appcontent.activitys.SplashActivity": {
+              "action": [
+                "android.intent.action.MAIN"
+              ],
+              "category": [
+                "android.intent.category.LAUNCHER"
+              ]
+            },
+            "com.miracast.tv.fastscreenmirroring.appcontent.realcast.ExpandedControlsActivity": {
+              "action": [
+                "android.intent.action.MAIN"
+              ]
+            },
+            "com.facebook.CustomTabActivity": {
+              "action": [
+                "android.intent.action.VIEW"
+              ],
+              "category": [
+                "android.intent.category.DEFAULT",
+                "android.intent.category.BROWSABLE"
+              ]
+            }
+          },
+          "Receivers": {
+            "androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy": {
+              "action": [
+                "android.intent.action.DEVICE_STORAGE_LOW",
+                "android.intent.action.DEVICE_STORAGE_OK"
+              ]
+            },
+            "com.facebook.AuthenticationTokenManager$CurrentAuthenticationTokenChangedBroadcastReceiver": {
+              "action": [
+                "com.facebook.sdk.ACTION_CURRENT_AUTHENTICATION_TOKEN_CHANGED"
+              ]
+            },
+            "androidx.profileinstaller.ProfileInstallReceiver": {
+              "action": [
+                "androidx.profileinstaller.action.INSTALL_PROFILE"
+              ]
+            },
+            "androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy": {
+              "action": [
+                "android.intent.action.BATTERY_OKAY",
+                "android.intent.action.BATTERY_LOW"
+              ]
+            },
+            "androidx.work.impl.diagnostics.DiagnosticsReceiver": {
+              "action": [
+                "androidx.work.diagnostics.REQUEST_DIAGNOSTICS"
+              ]
+            },
+            "com.google.firebase.iid.FirebaseInstanceIdReceiver": {
+              "action": [
+                "com.google.android.c2dm.intent.RECEIVE"
+              ]
+            },
+            "com.facebook.CurrentAccessTokenExpirationBroadcastReceiver": {
+              "action": [
+                "com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED"
+              ]
+            },
+            "androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy": {
+              "action": [
+                "android.net.conn.CONNECTIVITY_CHANGE"
+              ]
+            },
+            "androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver": {
+              "action": [
+                "androidx.work.impl.background.systemalarm.UpdateProxies"
+              ]
+            },
+            "androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy": {
+              "action": [
+                "android.intent.action.ACTION_POWER_CONNECTED",
+                "android.intent.action.ACTION_POWER_DISCONNECTED"
+              ]
+            },
+            "androidx.work.impl.background.systemalarm.RescheduleReceiver": {
+              "action": [
+                "android.intent.action.BOOT_COMPLETED",
+                "android.intent.action.TIME_SET",
+                "android.intent.action.TIMEZONE_CHANGED"
+              ]
+            }
+          }
+        },
+        "permission_details": {
+          "android.permission.ACCESS_FINE_LOCATION": {
+            "permission_type": "dangerous|instant",
+            "short_description": "access precise location only in the foreground",
+            "full_description": "This app can get your exact location only when it is in the foreground. These location services must be turned on and available on your phone for the app to be able to use them. This may increase battery consumption."
+          },
+          "android.permission.READ_EXTERNAL_STORAGE": {
+            "permission_type": "dangerous",
+            "short_description": "read the contents of your shared storage",
+            "full_description": "Allows the app to read the contents of your shared storage."
+          },
+          "android.permission.RECEIVE_BOOT_COMPLETED": {
+            "permission_type": "normal",
+            "short_description": "run at startup",
+            "full_description": "Allows the app to\n        have itself started as soon as the system has finished booting.\n        This can make it take longer to start the phone and allow the\n        app to slow down the overall phone by always running."
+          },
+          "android.permission.READ_PHONE_STATE": {
+            "permission_type": "dangerous",
+            "short_description": "read phone status and identity",
+            "full_description": "Allows the app to access the phone\n      features of the device.  This permission allows the app to determine the\n      phone number and device IDs, whether a call is active, and the remote number\n      connected by a call."
+          },
+          "com.google.android.c2dm.permission.RECEIVE": {
+            "permission_type": "normal",
+            "short_description": "Unknown permission from android reference",
+            "full_description": "Unknown permission from android reference"
+          },
+          "android.permission.ACCESS_WIFI_STATE": {
+            "permission_type": "normal",
+            "short_description": "view Wi-Fi connections",
+            "full_description": "Allows the app to view information\n      about Wi-Fi networking, such as whether Wi-Fi is enabled and name of\n      connected Wi-Fi devices."
+          },
+          "com.google.android.gms.permission.AD_ID": {
+            "permission_type": "normal",
+            "short_description": "Unknown permission from android reference",
+            "full_description": "Unknown permission from android reference"
+          },
+          "android.permission.WAKE_LOCK": {
+            "permission_type": "normal|instant",
+            "short_description": "prevent phone from sleeping",
+            "full_description": "Allows the app to prevent the phone from going to sleep."
+          },
+          "android.permission.FOREGROUND_SERVICE": {
+            "permission_type": "normal|instant",
+            "short_description": "run foreground service",
+            "full_description": "Allows the app to make use of foreground services."
+          },
+          "android.permission.CHANGE_WIFI_STATE": {
+            "permission_type": "normal",
+            "short_description": "connect and disconnect from Wi-Fi",
+            "full_description": "Allows the app to connect to and\n      disconnect from Wi-Fi access points and to make changes to device\n      configuration for Wi-Fi networks."
+          },
+          "android.permission.ACCESS_NETWORK_STATE": {
+            "permission_type": "normal|instant",
+            "short_description": "view network connections",
+            "full_description": "Allows the app to view\n      information about network connections such as which networks exist and are\n      connected."
+          },
+          "android.permission.INTERNET": {
+            "permission_type": "normal|instant",
+            "short_description": "have full network access",
+            "full_description": "Allows the app to create\n     network sockets and use custom network protocols. The browser and other\n     applications provide means to send data to the internet, so this\n     permission is not required to send data to the internet."
+          },
+          "com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE": {
+            "permission_type": "normal",
+            "short_description": "Unknown permission from android reference",
+            "full_description": "Unknown permission from android reference"
+          },
+          "android.permission.ACCESS_COARSE_LOCATION": {
+            "permission_type": "dangerous|instant",
+            "short_description": "access approximate location (network-based) only in the foreground",
+            "full_description": "This app can get your location based on network sources such as cell towers and Wi-Fi networks, but only when the app is in the foreground. These location services must be turned on and available on your phone for the app to be able to use them."
+          },
+          "android.permission.WRITE_EXTERNAL_STORAGE": {
+            "permission_type": "dangerous",
+            "short_description": "modify or delete the contents of your shared storage",
+            "full_description": "Allows the app to write the contents of your shared storage."
+          },
+          "com.android.vending.BILLING": {
+            "permission_type": "normal",
+            "short_description": "Unknown permission from android reference",
+            "full_description": "Unknown permission from android reference"
+          }
+        }
+      },
+      "bundle_info": {
+        "highest_datetime": "1981-01-01 01:01:02",
+        "lowest_datetime": "1981-01-01 01:01:02",
+        "num_children": 1771,
+        "extensions": {
+          "xml": 337,
+          "bin": 1,
+          "p0": 1,
+          "x86": 2,
+          "s0": 1,
+          "gz": 1,
+          "dex": 6,
+          "d0": 1,
+          "w0": 1,
+          "txt": 2,
+          "z0": 1,
+          "png": 4
+        },
+        "file_types": {
+          "XML": 336,
+          "DEX": 6,
+          "unknown": 641,
+          "ELF": 8,
+          "Java Bytecode": 1,
+          "JSON": 3,
+          "HTML": 1,
+          "PNG": 4
+        },
+        "type": "APK",
+        "uncompressed_size": 38963092
+      },
+      "last_submission_date": 1675151834,
+      "type_tags": [
+        "executable",
+        "mobile",
+        "android",
+        "apk"
+      ],
+      "unique_sources": 2,
+      "last_analysis_results": {
+        "Bkav": {
+          "method": "blacklist",
+          "engine_name": "Bkav",
+          "engine_version": "1.3.0.9899",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Lionic": {
+          "method": "blacklist",
+          "engine_name": "Lionic",
+          "engine_version": "7.5",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Elastic": {
+          "method": "blacklist",
+          "engine_name": "Elastic",
+          "engine_version": "4.0.75",
+          "engine_update": "20230127",
+          "category": "undetected",
+          "result": null
+        },
+        "MicroWorld-eScan": {
+          "method": "blacklist",
+          "engine_name": "MicroWorld-eScan",
+          "engine_version": "14.0.409.0",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "FireEye": {
+          "method": "blacklist",
+          "engine_name": "FireEye",
+          "engine_version": "35.24.1.0",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "CAT-QuickHeal": {
+          "method": "blacklist",
+          "engine_name": "CAT-QuickHeal",
+          "engine_version": "22.00",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "McAfee": {
+          "method": "blacklist",
+          "engine_name": "McAfee",
+          "engine_version": "6.0.6.653",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Malwarebytes": {
+          "method": "blacklist",
+          "engine_name": "Malwarebytes",
+          "engine_version": "4.4.4.52",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "VIPRE": {
+          "method": "blacklist",
+          "engine_name": "VIPRE",
+          "engine_version": "6.0.0.35",
+          "engine_update": "20230130",
+          "category": "undetected",
+          "result": null
+        },
+        "Sangfor": {
+          "method": "blacklist",
+          "engine_name": "Sangfor",
+          "engine_version": "2.23.0.0",
+          "engine_update": "20230120",
+          "category": "undetected",
+          "result": null
+        },
+        "Trustlook": {
+          "method": "blacklist",
+          "engine_name": "Trustlook",
+          "engine_version": "1.0",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "BitDefender": {
+          "method": "blacklist",
+          "engine_name": "BitDefender",
+          "engine_version": "7.2",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "K7GW": {
+          "method": "blacklist",
+          "engine_name": "K7GW",
+          "engine_version": "12.64.46554",
+          "engine_update": "20230125",
+          "category": "undetected",
+          "result": null
+        },
+        "K7AntiVirus": {
+          "method": "blacklist",
+          "engine_name": "K7AntiVirus",
+          "engine_version": "12.65.46639",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "BitDefenderTheta": {
+          "method": "blacklist",
+          "engine_name": "BitDefenderTheta",
+          "engine_version": "7.2.37796.0",
+          "engine_update": "20230130",
+          "category": "undetected",
+          "result": null
+        },
+        "VirIT": {
+          "method": "blacklist",
+          "engine_name": "VirIT",
+          "engine_version": "9.5.376",
+          "engine_update": "20230130",
+          "category": "undetected",
+          "result": null
+        },
+        "Cyren": {
+          "method": "blacklist",
+          "engine_name": "Cyren",
+          "engine_version": "6.5.1.2",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "SymantecMobileInsight": {
+          "method": "blacklist",
+          "engine_name": "SymantecMobileInsight",
+          "engine_version": "2.0",
+          "engine_update": "20230119",
+          "category": "undetected",
+          "result": null
+        },
+        "Symantec": {
+          "method": "blacklist",
+          "engine_name": "Symantec",
+          "engine_version": "1.19.0.0",
+          "engine_update": "20230130",
+          "category": "undetected",
+          "result": null
+        },
+        "ESET-NOD32": {
+          "method": "blacklist",
+          "engine_name": "ESET-NOD32",
+          "engine_version": "26671",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "TrendMicro-HouseCall": {
+          "method": "blacklist",
+          "engine_name": "TrendMicro-HouseCall",
+          "engine_version": "10.0.0.1040",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Avast": {
+          "method": "blacklist",
+          "engine_name": "Avast",
+          "engine_version": "22.11.7701.0",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "ClamAV": {
+          "method": "blacklist",
+          "engine_name": "ClamAV",
+          "engine_version": "1.0.0.0",
+          "engine_update": "20230130",
+          "category": "undetected",
+          "result": null
+        },
+        "Kaspersky": {
+          "method": "blacklist",
+          "engine_name": "Kaspersky",
+          "engine_version": "21.0.1.45",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Alibaba": {
+          "method": "blacklist",
+          "engine_name": "Alibaba",
+          "engine_version": "0.3.0.5",
+          "engine_update": "20190527",
+          "category": "undetected",
+          "result": null
+        },
+        "NANO-Antivirus": {
+          "method": "blacklist",
+          "engine_name": "NANO-Antivirus",
+          "engine_version": "1.0.146.25735",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "ViRobot": {
+          "method": "blacklist",
+          "engine_name": "ViRobot",
+          "engine_version": "2014.3.20.0",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Rising": {
+          "method": "blacklist",
+          "engine_name": "Rising",
+          "engine_version": "25.0.0.27",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Sophos": {
+          "method": "blacklist",
+          "engine_name": "Sophos",
+          "engine_version": "2.1.2.0",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Baidu": {
+          "method": "blacklist",
+          "engine_name": "Baidu",
+          "engine_version": "1.0.0.2",
+          "engine_update": "20190318",
+          "category": "undetected",
+          "result": null
+        },
+        "F-Secure": {
+          "method": "blacklist",
+          "engine_name": "F-Secure",
+          "engine_version": "18.10.1137.128",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "DrWeb": {
+          "method": "blacklist",
+          "engine_name": "DrWeb",
+          "engine_version": "7.0.59.12300",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Zillya": {
+          "method": "blacklist",
+          "engine_name": "Zillya",
+          "engine_version": "2.0.0.4804",
+          "engine_update": "20230130",
+          "category": "undetected",
+          "result": null
+        },
+        "TrendMicro": {
+          "method": "blacklist",
+          "engine_name": "TrendMicro",
+          "engine_version": "11.0.0.1006",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "McAfee-GW-Edition": {
+          "method": "blacklist",
+          "engine_name": "McAfee-GW-Edition",
+          "engine_version": "v2019.1.2+3728",
+          "engine_update": "20230130",
+          "category": "undetected",
+          "result": null
+        },
+        "CMC": {
+          "method": "blacklist",
+          "engine_name": "CMC",
+          "engine_version": "2.4.2022.1",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Emsisoft": {
+          "method": "blacklist",
+          "engine_name": "Emsisoft",
+          "engine_version": "2022.6.0.32461",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Ikarus": {
+          "method": "blacklist",
+          "engine_name": "Ikarus",
+          "engine_version": "6.0.33.0",
+          "engine_update": "20230130",
+          "category": "undetected",
+          "result": null
+        },
+        "GData": {
+          "method": "blacklist",
+          "engine_name": "GData",
+          "engine_version": "A:25.35149B:27.30469",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Jiangmin": {
+          "method": "blacklist",
+          "engine_name": "Jiangmin",
+          "engine_version": "16.0.100",
+          "engine_update": "20230130",
+          "category": "undetected",
+          "result": null
+        },
+        "Avira": {
+          "method": "blacklist",
+          "engine_name": "Avira",
+          "engine_version": "8.3.3.16",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Antiy-AVL": {
+          "method": "blacklist",
+          "engine_name": "Antiy-AVL",
+          "engine_version": "3.0",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Kingsoft": {
+          "method": "blacklist",
+          "engine_name": "Kingsoft",
+          "engine_version": "2017.9.26.565",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Microsoft": {
+          "method": "blacklist",
+          "engine_name": "Microsoft",
+          "engine_version": "1.1.19900.2",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Gridinsoft": {
+          "method": "blacklist",
+          "engine_name": "Gridinsoft",
+          "engine_version": "1.0.108.174",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Xcitium": {
+          "method": "blacklist",
+          "engine_name": "Xcitium",
+          "engine_version": "35371",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Arcabit": {
+          "method": "blacklist",
+          "engine_name": "Arcabit",
+          "engine_version": "2022.0.0.18",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "SUPERAntiSpyware": {
+          "method": "blacklist",
+          "engine_name": "SUPERAntiSpyware",
+          "engine_version": "5.6.0.1032",
+          "engine_update": "20230128",
+          "category": "undetected",
+          "result": null
+        },
+        "ZoneAlarm": {
+          "method": "blacklist",
+          "engine_name": "ZoneAlarm",
+          "engine_version": "1.0",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Avast-Mobile": {
+          "method": "blacklist",
+          "engine_name": "Avast-Mobile",
+          "engine_version": "230130-00",
+          "engine_update": "20230130",
+          "category": "undetected",
+          "result": null
+        },
+        "Google": {
+          "method": "blacklist",
+          "engine_name": "Google",
+          "engine_version": "1675148456",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "BitDefenderFalx": {
+          "method": "blacklist",
+          "engine_name": "BitDefenderFalx",
+          "engine_version": "2.0.936",
+          "engine_update": "20220103",
+          "category": "undetected",
+          "result": null
+        },
+        "AhnLab-V3": {
+          "method": "blacklist",
+          "engine_name": "AhnLab-V3",
+          "engine_version": "3.23.1.10344",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Acronis": {
+          "method": "blacklist",
+          "engine_name": "Acronis",
+          "engine_version": "1.2.0.113",
+          "engine_update": "20221114",
+          "category": "undetected",
+          "result": null
+        },
+        "VBA32": {
+          "method": "blacklist",
+          "engine_name": "VBA32",
+          "engine_version": "5.0.0",
+          "engine_update": "20230130",
+          "category": "undetected",
+          "result": null
+        },
+        "ALYac": {
+          "method": "blacklist",
+          "engine_name": "ALYac",
+          "engine_version": "1.1.3.1",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "MAX": {
+          "method": "blacklist",
+          "engine_name": "MAX",
+          "engine_version": "2023.1.4.1",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Zoner": {
+          "method": "blacklist",
+          "engine_name": "Zoner",
+          "engine_version": "2.2.2.0",
+          "engine_update": "20230130",
+          "category": "undetected",
+          "result": null
+        },
+        "Tencent": {
+          "method": "blacklist",
+          "engine_name": "Tencent",
+          "engine_version": "1.0.0.1",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Yandex": {
+          "method": "blacklist",
+          "engine_name": "Yandex",
+          "engine_version": "5.5.2.24",
+          "engine_update": "20230130",
+          "category": "undetected",
+          "result": null
+        },
+        "TACHYON": {
+          "method": "blacklist",
+          "engine_name": "TACHYON",
+          "engine_version": "2023-01-31.01",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "MaxSecure": {
+          "method": "blacklist",
+          "engine_name": "MaxSecure",
+          "engine_version": "1.0.0.1",
+          "engine_update": "20230127",
+          "category": "undetected",
+          "result": null
+        },
+        "Fortinet": {
+          "method": "blacklist",
+          "engine_name": "Fortinet",
+          "engine_version": "6.4.258.0",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "AVG": {
+          "method": "blacklist",
+          "engine_name": "AVG",
+          "engine_version": "22.11.7701.0",
+          "engine_update": "20230131",
+          "category": "undetected",
+          "result": null
+        },
+        "Panda": {
+          "method": "blacklist",
+          "engine_name": "Panda",
+          "engine_version": "4.6.4.2",
+          "engine_update": "20230130",
+          "category": "undetected",
+          "result": null
+        },
+        "tehtris": {
+          "method": "blacklist",
+          "engine_name": "tehtris",
+          "engine_version": "v0.1.4",
+          "engine_update": "20230131",
+          "category": "type-unsupported",
+          "result": null
+        },
+        "Webroot": {
+          "method": "blacklist",
+          "engine_name": "Webroot",
+          "engine_version": "1.0.0.403",
+          "engine_update": "20230131",
+          "category": "type-unsupported",
+          "result": null
+        },
+        "APEX": {
+          "method": "blacklist",
+          "engine_name": "APEX",
+          "engine_version": "6.381",
+          "engine_update": "20230128",
+          "category": "type-unsupported",
+          "result": null
+        },
+        "Paloalto": {
+          "method": "blacklist",
+          "engine_name": "Paloalto",
+          "engine_version": "0.9.0.1003",
+          "engine_update": "20230131",
+          "category": "type-unsupported",
+          "result": null
+        },
+        "Cynet": {
+          "method": "blacklist",
+          "engine_name": "Cynet",
+          "engine_version": "4.0.0.27",
+          "engine_update": "20230131",
+          "category": "type-unsupported",
+          "result": null
+        },
+        "Trapmine": {
+          "method": "blacklist",
+          "engine_name": "Trapmine",
+          "engine_version": "4.0.10.141",
+          "engine_update": "20230103",
+          "category": "type-unsupported",
+          "result": null
+        },
+        "Cylance": {
+          "method": "blacklist",
+          "engine_name": "Cylance",
+          "engine_version": "2.3.1.101",
+          "engine_update": "20230131",
+          "category": "type-unsupported",
+          "result": null
+        },
+        "SentinelOne": {
+          "method": "blacklist",
+          "engine_name": "SentinelOne",
+          "engine_version": "23.1.0.5",
+          "engine_update": "20230111",
+          "category": "type-unsupported",
+          "result": null
+        },
+        "Cybereason": {
+          "method": "blacklist",
+          "engine_name": "Cybereason",
+          "engine_version": "1.2.449",
+          "engine_update": "20210330",
+          "category": "type-unsupported",
+          "result": null
+        }
+      },
+      "tags": [
+        "apk",
+        "android",
+        "reflection",
+        "contains-elf"
+      ],
+      "last_modification_date": 1703652785,
+      "vhash": "ad0ed2ff1f7e2755e1fb810b8fe46ab9",
+      "md5": "93ad07c6d68fcf6f1c1cfc718c696a5c",
+      "meaningful_name": "cast-to-tv-chromecast.apk",
+      "ssdeep": "393216:HPSMyvx8ly98aJIKX5KV3XH/jq5ZxvciEwrS46A2PkF+MNEIr6grRS:HPSvvxVaaJlJKdX8ktQS4aPkUM3r6grY",
+      "times_submitted": 2,
+      "names": [
+        "cast-to-tv-chromecast.apk"
+      ],
+      "reputation": 0,
+      "sha1": "ab198674d116b7e1fc9b916c7cdc433f6f15e707"
+    }
+  }
+}
