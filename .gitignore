@@ -1,0 +1,59 @@
+# ─── Secrets — NEVER commit API keys ────────────────────────────────
+.androzoo_key
+.vt_key
+*.key
+*_key
+!*.key.example
+
+# ─── Large data (not redistributed) ─────────────────────────────────
+# AndroZoo catalog (multi-GB) and the per-year samples drawn from it.
+Data/
+
+# ─── Legacy SQLite files (storage is CSV now) ───────────────────────
+*.db
+
+# ─── Run outputs that must never be published ───────────────────────
+# Downloaded APKs are real malware; logcat/screenshots are bulky per-run
+# debug; runs.csv holds the device serial and the run's argv.
+results_*/apks/
+results_*/logcat/
+results_*/screenshots/
+results_*/runs.csv
+
+# ─── Exploratory / scratch runs: not published at all ───────────────
+results/
+results_all/
+results_flagged/
+results_flagged_echecs_bak_*/
+results_vtest/
+
+# Study runs (results_sample, results_sample2): their results.csv /
+# alerts.csv / notifications.csv ARE published — the rules above already
+# strip the APKs, logcat, screenshots and runs.csv from them.
+
+# ─── Study artifacts: keep the final reports + sample manifests ─────
+report/*
+!report/*.pdf
+!report/sample_2020_2026.csv
+!report/sample_2020_2026_b.csv
+!report/harmful_vs_vt.csv
+
+# ─── Experiment-specific launchers (hold absolute machine paths) ─────
+run_sample.sh
+run_sample2.sh
+etat.sh
+lancer.sh
+arreter.sh
+verify_pp.sh
+
+# ─── Run / capture logs ─────────────────────────────────────────────
+*.log
+
+# ─── Python / OS cruft ──────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.DS_Store
